@@ -7,3 +7,4 @@ exclude =
     *.egg-info,
     dist,
     build
+ignore = W291,W292,W293,E302,E303,F401,F403,F405,E111
