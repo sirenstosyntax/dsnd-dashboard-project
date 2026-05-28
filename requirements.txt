@@ -7,4 +7,6 @@ pandas==2.2.3
 pytest
 flake8
 ipython
+sqlite-minutils
+starlette==0.41.2
 #### Add text to install the python-package here
