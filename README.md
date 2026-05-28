@@ -79,3 +79,24 @@ erDiagram
   employee ||--o{ employee_events : "employee_id"
   notes }o--o{ employee_events : ""
 ```
+## Setup and Installation
+
+1. Install dependencies:
+
+pip install -r requirements.txt
+
+2. Build and install the Python package:
+
+cd python-package
+python setup.py sdist
+pip install dist/employee_events-0.0.tar.gz
+cd ..
+
+3. Run the dashboard:
+
+cd report
+python dashboard.py
+
+4. Run tests:
+
+pytest tests/
