@@ -28,7 +28,11 @@ class ReportDropdown(Dropdown):
 class Header(BaseComponent):
 
     def build_component(self, entity_id, model):
-        return H1(model.name)
+        if model.name == "employee":
+            title = "Employee Performance"
+        else:
+            title = "Team Performance"
+        return H1(title)
 
 
 class LineChart(MatplotlibViz):
@@ -47,7 +51,6 @@ class LineChart(MatplotlibViz):
         ax.set_xlabel('Date')
         ax.set_ylabel('Count')
 
-
 class BarChart(MatplotlibViz):
 
     predictor = load_model()
@@ -63,7 +66,8 @@ class BarChart(MatplotlibViz):
             pred = probabilities[0]
 
         fig, ax = plt.subplots()
-        ax.barh([''], [pred])
+        color = 'green' if pred < 0.33 else 'orange' if pred < 0.66 else 'red'
+        ax.barh([''], [pred], color=color)
         ax.set_xlim(0, 1)
         ax.set_title('Predicted Recruitment Risk', fontsize=20)
         self.set_axis_styling(ax, bordercolor='black', fontcolor='black')
